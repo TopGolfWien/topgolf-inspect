@@ -30,80 +30,111 @@ async function saveData(key, data) {
 
 // ── Data ───────────────────────────────────────────────────────────────────────
 const ZONES = [
+  // 2. OG
   { id:"elektro_2og", label:"Elektroraum 2. OG", floor:"2. OG", icon:"⚡", color:"#a855f7", items:[
     {text:"Lüftungsanlage störungsfrei?",days:"all"},{text:"Alle Sicherungen eingeschaltet?",days:"all"}]},
   { id:"eventraum", label:"Eventräume 2. OG", floor:"2. OG", icon:"🎉", color:"#f59e0b", items:[
     {text:"Eventraum Groß – Beleuchtung funktioniert?",days:"all"},{text:"Eventraum Groß – Keine Auffälligkeiten?",days:"all"},{text:"Eventraum Groß – Türen i.O.?",days:"all"},
     {text:"Eventraum Klein – Beleuchtung funktioniert?",days:"all"},{text:"Eventraum Klein – Keine Auffälligkeiten?",days:"all"},{text:"Eventraum Klein – Türen i.O.?",days:"all"}]},
-  { id:"wc_herren_2og", label:"Herren WC 2. OG", floor:"2. OG", icon:"🚹", color:"#38bdf8", items:[
-    {text:"Vorraum – Seifenspender testen",days:"all"},{text:"Vorraum – Wasserhähne testen",days:"all"},{text:"Vorraum – Türgriff fest?",days:"all"},{text:"Vorraum – Türschließer funktioniert?",days:"all"},{text:"Vorraum – Handtuchhalter fest?",days:"all"},{text:"Vorraum – Alle Lichter gehen?",days:"all"},
-    {text:"Toilettenraum – Toilettensitz fest?",days:"all"},{text:"Toilettenraum – Kleiderhaken vorhanden?",days:"all"},{text:"Toilettenraum – Türpuffer angebracht?",days:"all"},{text:"Toilettenraum – Aufkleber in der Toilette?",days:"all"},{text:"Toilettenraum – Toilettenpapierhalter i.O.?",days:"all"},
-    {text:"Toilettenraum – Urinale i.O.?",days:"all"},{text:"Toilettenraum – Alle Spülungen gehen?",days:"all"},{text:"Toilettenraum – Trennwände auf festen Sitz geprüft?",days:"all"},{text:"Toilettenraum – Trennwand zwischen Urinalen fest?",days:"all"},{text:"Toilettenraum – Alle Lichter gehen?",days:"all"}]},
-  { id:"wc_damen_2og", label:"Damen WC 2. OG", floor:"2. OG", icon:"🚺", color:"#ec4899", items:[
-    {text:"Vorraum – Seifenspender testen",days:"all"},{text:"Vorraum – Wasserhähne testen",days:"all"},{text:"Vorraum – Türgriff fest?",days:"all"},{text:"Vorraum – Türschließer funktioniert?",days:"all"},{text:"Vorraum – Alle Lichter gehen?",days:"all"},{text:"Vorraum – Bildschirm funktioniert?",days:"all"},
-    {text:"Toilettenraum – Toilettensitz fest?",days:"all"},{text:"Toilettenraum – Kleiderhaken vorhanden?",days:"all"},{text:"Toilettenraum – Türpuffer angebracht?",days:"all"},{text:"Toilettenraum – Aufkleber in der Toilette?",days:"all"},{text:"Toilettenraum – Toilettenpapierhalter i.O.?",days:"all"},
-    {text:"Toilettenraum – Hygienebeutelspender i.O.?",days:"all"},{text:"Toilettenraum – Alle Spülungen gehen?",days:"all"},{text:"Toilettenraum – Trennwände auf festen Sitz geprüft?",days:"all"},{text:"Toilettenraum – Alle Lichter gehen?",days:"all"}]},
+  { id:"wc_h_vor_2og", label:"Herren WC Vorraum 2. OG", floor:"2. OG", icon:"🚹", color:"#38bdf8", items:[
+    {text:"Seifenspender testen",days:"all"},{text:"Wasserhähne testen",days:"all"},{text:"Türgriff fest?",days:"all"},
+    {text:"Türschließer funktioniert?",days:"all"},{text:"Handtuchhalter fest?",days:"all"},{text:"Alle Lichter gehen?",days:"all"}]},
+  { id:"wc_h_wc_2og", label:"Herren WC Toilettenraum 2. OG", floor:"2. OG", icon:"🚹", color:"#0ea5e9", items:[
+    {text:"Toilettensitz fest?",days:"all"},{text:"Kleiderhaken vorhanden?",days:"all"},{text:"Türpuffer angebracht?",days:"all"},
+    {text:"Aufkleber in der Toilette?",days:"all"},{text:"Toilettenpapierhalter i.O.?",days:"all"},{text:"Urinale i.O.?",days:"all"},
+    {text:"Alle Spülungen gehen?",days:"all"},{text:"Trennwände auf festen Sitz geprüft?",days:"all"},
+    {text:"Trennwand zwischen Urinalen fest?",days:"all"},{text:"Alle Lichter gehen?",days:"all"}]},
+  { id:"wc_d_vor_2og", label:"Damen WC Vorraum 2. OG", floor:"2. OG", icon:"🚺", color:"#ec4899", items:[
+    {text:"Seifenspender testen",days:"all"},{text:"Wasserhähne testen",days:"all"},{text:"Türgriff fest?",days:"all"},
+    {text:"Türschließer funktioniert?",days:"all"},{text:"Alle Lichter gehen?",days:"all"},{text:"Bildschirm funktioniert?",days:"all"}]},
+  { id:"wc_d_wc_2og", label:"Damen WC Toilettenraum 2. OG", floor:"2. OG", icon:"🚺", color:"#db2777", items:[
+    {text:"Toilettensitz fest?",days:"all"},{text:"Kleiderhaken vorhanden?",days:"all"},{text:"Türpuffer angebracht?",days:"all"},
+    {text:"Aufkleber in der Toilette?",days:"all"},{text:"Toilettenpapierhalter i.O.?",days:"all"},{text:"Hygienebeutelspender i.O.?",days:"all"},
+    {text:"Alle Spülungen gehen?",days:"all"},{text:"Trennwände auf festen Sitz geprüft?",days:"all"},{text:"Alle Lichter gehen?",days:"all"}]},
   { id:"terrasse_2og", label:"Terrasse 2. OG", floor:"2. OG", icon:"🌤️", color:"#22c55e", items:[
     {text:"Verschmutzungen beseitigt?",days:"all"},{text:"Alle Schirme i.O.?",days:"all"},{text:"Beleuchtung funktionsfähig?",days:"all"},{text:"Hinter der Scheibe alles sauber?",days:"all"}]},
   { id:"teeline_2og", label:"Tee Line 2. OG", floor:"2. OG", icon:"⛳", color:"#22c55e", items:[
     {text:"Alle Monitore funktionsfähig?",days:"all"},{text:"Alle Monitore an?",days:"all"},{text:"Alle Game Panel i.O.?",days:"all"},{text:"Alle Schläger da?",days:"all"},
     {text:"Abschlagmatten am Dispenser angeschoben?",days:"all"},{text:"Alle Dispenser abgeschlossen?",days:"all"},{text:"Haben alle Abschlagmatten 2 Tees?",days:"all"},
-    {text:"Alle Heizungen funktionieren? (Sommer: Di prüfen)",days:"di"},{text:"Kein Kantenschutz an Bagstands abstehend?",days:"di"},{text:"Alle Stühle i.O.?",days:"di"},
+    {text:"Alle Heizungen funktionieren?",days:"all"},{text:"Kein Kantenschutz an Bagstands abstehend?",days:"di"},{text:"Alle Stühle i.O.?",days:"di"},
     {text:"Absturzsicherung (Netz) i.O.?",days:"all"}]},
   { id:"bar_2og", label:"Bar & Common Area 2. OG", floor:"2. OG", icon:"🍺", color:"#f59e0b", items:[
     {text:"Lagerraum – Leitern an ihrem Platz?",days:"all"},{text:"Bar – Störung auf der Schankanlage?",days:"all"},{text:"Bar – Sichtkontrolle, alles OK?",days:"all"},
     {text:"Common Area – Alle Lampen gehen?",days:"all"},{text:"Common Area – Alle Bildschirme an mit Programm?",days:"all"}]},
+  // 1. OG
   { id:"elektro_1og", label:"Elektroraum 1. OG", floor:"1. OG", icon:"⚡", color:"#a855f7", items:[
     {text:"Alle Sicherungen eingeschaltet?",days:"all"}]},
-  { id:"wc_herren_1og", label:"Herren WC 1. OG", floor:"1. OG", icon:"🚹", color:"#38bdf8", items:[
-    {text:"Vorraum – Seifenspender testen",days:"all"},{text:"Vorraum – Wasserhähne testen",days:"all"},{text:"Vorraum – Türgriff fest?",days:"all"},{text:"Vorraum – Türschließer funktioniert?",days:"all"},{text:"Vorraum – Handtuchhalter fest?",days:"all"},{text:"Vorraum – Alle Lichter gehen?",days:"all"},
-    {text:"Toilettenraum – Toilettensitz fest?",days:"all"},{text:"Toilettenraum – Kleiderhaken vorhanden?",days:"all"},{text:"Toilettenraum – Türpuffer angebracht?",days:"all"},{text:"Toilettenraum – Aufkleber in der Toilette?",days:"all"},{text:"Toilettenraum – Toilettenpapierhalter i.O.?",days:"all"},
-    {text:"Toilettenraum – Urinale i.O.?",days:"all"},{text:"Toilettenraum – Alle Spülungen gehen?",days:"all"},{text:"Toilettenraum – Trennwände auf festen Sitz geprüft?",days:"all"},{text:"Toilettenraum – Trennwand zwischen Urinalen fest?",days:"all"},{text:"Toilettenraum – Alle Lichter gehen?",days:"all"}]},
-  { id:"wc_damen_1og", label:"Damen WC 1. OG", floor:"1. OG", icon:"🚺", color:"#ec4899", items:[
-    {text:"Vorraum – Seifenspender testen",days:"all"},{text:"Vorraum – Wasserhähne testen",days:"all"},{text:"Vorraum – Türgriff fest?",days:"all"},{text:"Vorraum – Türschließer funktioniert?",days:"all"},{text:"Vorraum – Alle Lichter gehen?",days:"all"},{text:"Vorraum – Bildschirm funktioniert?",days:"all"},
-    {text:"Toilettenraum – Toilettensitz fest?",days:"all"},{text:"Toilettenraum – Kleiderhaken vorhanden?",days:"all"},{text:"Toilettenraum – Türpuffer angebracht?",days:"all"},{text:"Toilettenraum – Aufkleber in der Toilette?",days:"all"},{text:"Toilettenraum – Toilettenpapierhalter i.O.?",days:"all"},
-    {text:"Toilettenraum – Hygienebeutelspender i.O.?",days:"all"},{text:"Toilettenraum – Alle Spülungen gehen?",days:"all"},{text:"Toilettenraum – Trennwände auf festen Sitz geprüft?",days:"all"},{text:"Toilettenraum – Alle Lichter gehen?",days:"all"}]},
+  { id:"wc_h_vor_1og", label:"Herren WC Vorraum 1. OG", floor:"1. OG", icon:"🚹", color:"#38bdf8", items:[
+    {text:"Seifenspender testen",days:"all"},{text:"Wasserhähne testen",days:"all"},{text:"Türgriff fest?",days:"all"},
+    {text:"Türschließer funktioniert?",days:"all"},{text:"Handtuchhalter fest?",days:"all"},{text:"Alle Lichter gehen?",days:"all"}]},
+  { id:"wc_h_wc_1og", label:"Herren WC Toilettenraum 1. OG", floor:"1. OG", icon:"🚹", color:"#0ea5e9", items:[
+    {text:"Toilettensitz fest?",days:"all"},{text:"Kleiderhaken vorhanden?",days:"all"},{text:"Türpuffer angebracht?",days:"all"},
+    {text:"Aufkleber in der Toilette?",days:"all"},{text:"Toilettenpapierhalter i.O.?",days:"all"},{text:"Urinale i.O.?",days:"all"},
+    {text:"Alle Spülungen gehen?",days:"all"},{text:"Trennwände auf festen Sitz geprüft?",days:"all"},
+    {text:"Trennwand zwischen Urinalen fest?",days:"all"},{text:"Alle Lichter gehen?",days:"all"}]},
+  { id:"wc_d_vor_1og", label:"Damen WC Vorraum 1. OG", floor:"1. OG", icon:"🚺", color:"#ec4899", items:[
+    {text:"Seifenspender testen",days:"all"},{text:"Wasserhähne testen",days:"all"},{text:"Türgriff fest?",days:"all"},
+    {text:"Türschließer funktioniert?",days:"all"},{text:"Alle Lichter gehen?",days:"all"},{text:"Bildschirm funktioniert?",days:"all"}]},
+  { id:"wc_d_wc_1og", label:"Damen WC Toilettenraum 1. OG", floor:"1. OG", icon:"🚺", color:"#db2777", items:[
+    {text:"Toilettensitz fest?",days:"all"},{text:"Kleiderhaken vorhanden?",days:"all"},{text:"Türpuffer angebracht?",days:"all"},
+    {text:"Aufkleber in der Toilette?",days:"all"},{text:"Toilettenpapierhalter i.O.?",days:"all"},{text:"Hygienebeutelspender i.O.?",days:"all"},
+    {text:"Alle Spülungen gehen?",days:"all"},{text:"Trennwände auf festen Sitz geprüft?",days:"all"},{text:"Alle Lichter gehen?",days:"all"}]},
   { id:"terrasse_1og", label:"Terrasse 1. OG", floor:"1. OG", icon:"🌤️", color:"#22c55e", items:[
     {text:"Verschmutzungen beseitigt?",days:"all"},{text:"Alle Schirme i.O.?",days:"all"},{text:"Beleuchtung funktionsfähig?",days:"all"},{text:"Alles sauber?",days:"all"},{text:"Bodenplatten i.O.?",days:"all"}]},
   { id:"teeline_1og", label:"Tee Line 1. OG", floor:"1. OG", icon:"⛳", color:"#22c55e", items:[
     {text:"Alle Monitore funktionsfähig?",days:"all"},{text:"Alle Monitore an?",days:"all"},{text:"Alle Game Panel i.O.?",days:"all"},{text:"Alle Schläger da?",days:"all"},
     {text:"Abschlagmatten am Dispenser angeschoben?",days:"all"},{text:"Alle Dispenser abgeschlossen?",days:"all"},{text:"Haben alle Abschlagmatten 2 Tees?",days:"all"},
-    {text:"Alle Heizungen funktionieren? (Sommer: Di prüfen)",days:"di"},{text:"Kein Kantenschutz an Bagstands abstehend?",days:"di"},{text:"Alle Stühle i.O.?",days:"di"},
+    {text:"Alle Heizungen funktionieren?",days:"all"},{text:"Kein Kantenschutz an Bagstands abstehend?",days:"di"},{text:"Alle Stühle i.O.?",days:"di"},
     {text:"Absturzsicherung (Netz) i.O.?",days:"all"}]},
   { id:"bar_kueche_1og", label:"Bar, Küche & Common Area 1. OG", floor:"1. OG", icon:"🍔", color:"#f59e0b", items:[
     {text:"Lagerraum – Leitern an ihrem Platz?",days:"all"},{text:"Bar – Störung auf der Schankanlage?",days:"all"},{text:"Bar – Sichtkontrolle, alles OK?",days:"all"},
     {text:"Küche – Lüftung an?",days:"all"},{text:"Küche – Sichtkontrolle, alles OK?",days:"all"},
     {text:"Common Area – Alle Lampen gehen?",days:"all"},{text:"Common Area – Alle Bildschirme an mit Programm?",days:"all"},{text:"Common Area – Video Wall i.O.?",days:"all"}]},
-  { id:"technik_eg", label:"Technikräume EG", floor:"EG", icon:"🔧", color:"#a855f7", items:[
-    {text:"Elektroraum – Alle Sicherungen eingeschaltet?",days:"all"},{text:"Elektroraum – BMZ störungsfrei?",days:"all"},
-    {text:"Heizraum – Störungsfrei?",days:"all"},{text:"Wasserraum – Salz aufgefüllt?",days:"all"},{text:"Wasserraum – Genügend Salz vorhanden?",days:"all"},{text:"Wasserraum – Rest störungsfrei?",days:"all"}]},
-  { id:"wc_herren_eg", label:"Herren WC EG", floor:"EG", icon:"🚹", color:"#38bdf8", items:[
-    {text:"Vorraum – Seifenspender testen",days:"all"},{text:"Vorraum – Wasserhähne testen",days:"all"},{text:"Vorraum – Türgriff fest?",days:"all"},{text:"Vorraum – Türschließer funktioniert?",days:"all"},{text:"Vorraum – Handtuchhalter fest?",days:"all"},{text:"Vorraum – Alle Lichter gehen?",days:"all"},
-    {text:"Toilettenraum – Toilettensitz fest?",days:"all"},{text:"Toilettenraum – Kleiderhaken vorhanden?",days:"all"},{text:"Toilettenraum – Türpuffer angebracht?",days:"all"},{text:"Toilettenraum – Aufkleber in der Toilette?",days:"all"},{text:"Toilettenraum – Toilettenpapierhalter i.O.?",days:"all"},
-    {text:"Toilettenraum – Urinale i.O.?",days:"all"},{text:"Toilettenraum – Alle Spülungen gehen?",days:"all"},{text:"Toilettenraum – Trennwände auf festen Sitz geprüft?",days:"all"},{text:"Toilettenraum – Trennwand zwischen Urinalen fest?",days:"all"},{text:"Toilettenraum – Alle Lichter gehen?",days:"all"}]},
-  { id:"wc_damen_eg", label:"Damen WC EG", floor:"EG", icon:"🚺", color:"#ec4899", items:[
-    {text:"Vorraum – Seifenspender testen",days:"all"},{text:"Vorraum – Wasserhähne testen",days:"all"},{text:"Vorraum – Türgriff fest?",days:"all"},{text:"Vorraum – Türschließer funktioniert?",days:"all"},{text:"Vorraum – Alle Lichter gehen?",days:"all"},{text:"Vorraum – Bildschirm funktioniert?",days:"all"},
-    {text:"Toilettenraum – Toilettensitz fest?",days:"all"},{text:"Toilettenraum – Kleiderhaken vorhanden?",days:"all"},{text:"Toilettenraum – Türpuffer angebracht?",days:"all"},{text:"Toilettenraum – Aufkleber in der Toilette?",days:"all"},{text:"Toilettenraum – Toilettenpapierhalter i.O.?",days:"all"},
-    {text:"Toilettenraum – Hygienebeutelspender i.O.?",days:"all"},{text:"Toilettenraum – Alle Spülungen gehen?",days:"all"},{text:"Toilettenraum – Trennwände auf festen Sitz geprüft?",days:"all"},{text:"Toilettenraum – Alle Lichter gehen?",days:"all"},
+  // EG
+  { id:"elektro_eg", label:"Elektroraum & BMZ EG", floor:"EG", icon:"⚡", color:"#a855f7", items:[
+    {text:"Alle Sicherungen eingeschaltet?",days:"all"},{text:"BMZ störungsfrei?",days:"all"}]},
+  { id:"heizung_eg", label:"Heizraum & Wasserraum EG", floor:"EG", icon:"🔧", color:"#64748b", items:[
+    {text:"Heizraum – Störungsfrei?",days:"mo_mi_fr"},{text:"Wasserraum – Salz aufgefüllt?",days:"mo_mi_fr"},
+    {text:"Wasserraum – Genügend Salz vorhanden?",days:"mo_mi_fr"},{text:"Wasserraum – Rest störungsfrei?",days:"mo_mi_fr"}]},
+  { id:"wc_h_vor_eg", label:"Herren WC Vorraum EG", floor:"EG", icon:"🚹", color:"#38bdf8", items:[
+    {text:"Seifenspender testen",days:"all"},{text:"Wasserhähne testen",days:"all"},{text:"Türgriff fest?",days:"all"},
+    {text:"Türschließer funktioniert?",days:"all"},{text:"Handtuchhalter fest?",days:"all"},{text:"Alle Lichter gehen?",days:"all"}]},
+  { id:"wc_h_wc_eg", label:"Herren WC Toilettenraum EG", floor:"EG", icon:"🚹", color:"#0ea5e9", items:[
+    {text:"Toilettensitz fest?",days:"all"},{text:"Kleiderhaken vorhanden?",days:"all"},{text:"Türpuffer angebracht?",days:"all"},
+    {text:"Aufkleber in der Toilette?",days:"all"},{text:"Toilettenpapierhalter i.O.?",days:"all"},{text:"Urinale i.O.?",days:"all"},
+    {text:"Alle Spülungen gehen?",days:"all"},{text:"Trennwände auf festen Sitz geprüft?",days:"all"},
+    {text:"Trennwand zwischen Urinalen fest?",days:"all"},{text:"Alle Lichter gehen?",days:"all"}]},
+  { id:"wc_d_vor_eg", label:"Damen WC Vorraum EG", floor:"EG", icon:"🚺", color:"#ec4899", items:[
+    {text:"Seifenspender testen",days:"all"},{text:"Wasserhähne testen",days:"all"},{text:"Türgriff fest?",days:"all"},
+    {text:"Türschließer funktioniert?",days:"all"},{text:"Alle Lichter gehen?",days:"all"},{text:"Bildschirm funktioniert?",days:"all"}]},
+  { id:"wc_d_wc_eg", label:"Damen WC Toilettenraum EG", floor:"EG", icon:"🚺", color:"#db2777", items:[
+    {text:"Toilettensitz fest?",days:"all"},{text:"Kleiderhaken vorhanden?",days:"all"},{text:"Türpuffer angebracht?",days:"all"},
+    {text:"Aufkleber in der Toilette?",days:"all"},{text:"Toilettenpapierhalter i.O.?",days:"all"},{text:"Hygienebeutelspender i.O.?",days:"all"},
+    {text:"Alle Spülungen gehen?",days:"all"},{text:"Trennwände auf festen Sitz geprüft?",days:"all"},{text:"Alle Lichter gehen?",days:"all"},
     {text:"Behindertentoilette – Notrufanlage funktioniert?",days:"do"},{text:"Behindertentoilette – Toilette und Griffe fest?",days:"do"},{text:"Behindertentoilette – Wickeltisch richtig befestigt?",days:"do"}]},
-  { id:"bar_eg", label:"Bar, Lager & Tee Line EG", floor:"EG", icon:"🏌️", color:"#f59e0b", items:[
-    {text:"Lager – Leitern an ihrem Platz?",days:"all"},{text:"Lager – CO2 Flaschen i.O.?",days:"all"},{text:"Lager – Genügend CO2 Flaschen vorhanden?",days:"all"},{text:"Lager – CO2 Konzentration im Kühlhaus i.O.?",days:"all"},
-    {text:"Tee Line – Alle Monitore funktionsfähig?",days:"all"},{text:"Tee Line – Alle Monitore an?",days:"all"},{text:"Tee Line – Alle Game Panel i.O.?",days:"all"},{text:"Tee Line – Alle Schläger da?",days:"all"},
-    {text:"Tee Line – Abschlagmatten am Dispenser angeschoben?",days:"all"},{text:"Tee Line – Alle Dispenser abgeschlossen?",days:"all"},{text:"Tee Line – Haben alle Abschlagmatten 2 Tees?",days:"all"},
+  { id:"teeline_eg", label:"Tee Line EG", floor:"EG", icon:"⛳", color:"#22c55e", items:[
+    {text:"Alle Monitore funktionsfähig?",days:"all"},{text:"Alle Monitore an?",days:"all"},{text:"Alle Game Panel i.O.?",days:"all"},{text:"Alle Schläger da?",days:"all"},
+    {text:"Abschlagmatten am Dispenser angeschoben?",days:"all"},{text:"Alle Dispenser abgeschlossen?",days:"all"},{text:"Haben alle Abschlagmatten 2 Tees?",days:"all"},
+    {text:"Alle Heizungen funktionieren?",days:"all"}]},
+  { id:"bar_lager_eg", label:"Bar & Lager EG", floor:"EG", icon:"🍺", color:"#f59e0b", items:[
+    {text:"Leitern an ihrem Platz?",days:"all"},{text:"CO2 Flaschen i.O.?",days:"all"},{text:"Genügend CO2 Flaschen vorhanden?",days:"all"},{text:"CO2 Konzentration im Kühlhaus i.O.?",days:"all"},
     {text:"Bar – Störung auf der Schankanlage?",days:"all"},{text:"Bar – Sichtkontrolle, alles OK?",days:"all"},
-    {text:"Common Area – Alle Lampen gehen?",days:"all"},{text:"Common Area – Alle Bildschirme an mit Programm?",days:"all"},{text:"Common Area – Regenschirme aufgefüllt?",days:"all"},{text:"Common Area – Schrankenanlage störungsfrei?",days:"all"},
-    {text:"Terrasse EG – Verschmutzungen beseitigt?",days:"all"},{text:"Terrasse EG – Alle Schirme i.O.?",days:"all"},{text:"Terrasse EG – Beleuchtung funktionsfähig?",days:"all"},{text:"Terrasse EG – Alles sauber?",days:"all"}]},
+    {text:"Common Area – Alle Lampen gehen?",days:"all"},{text:"Common Area – Alle Bildschirme an mit Programm?",days:"all"},{text:"Common Area – Regenschirme aufgefüllt?",days:"all"},{text:"Common Area – Schrankenanlage störungsfrei?",days:"all"}]},
+  { id:"terrasse_eg", label:"Terrasse EG", floor:"EG", icon:"🌤️", color:"#22c55e", items:[
+    {text:"Verschmutzungen beseitigt?",days:"all"},{text:"Alle Schirme i.O.?",days:"all"},{text:"Beleuchtung funktionsfähig?",days:"all"},{text:"Alles sauber?",days:"all"}]},
+  // DG & Außen
   { id:"dach", label:"Dachgeschoss", floor:"DG", icon:"🏗️", color:"#64748b", items:[
     {text:"Dach frei von Müll?",days:"so"},{text:"Alle Abflüsse sauber?",days:"so"},
     {text:"Küchenabluft – Taschenfilter i.O.? (ggf. wechseln)",days:"mi"},{text:"Küchenabluft – Filter Küchenzuluft (Blech) tauschen",days:"mi"},{text:"Küchenabluft – Filter in die Küche gebracht?",days:"mi"}]},
-  { id:"aussen", label:"Außenbereiche", floor:"Außen", icon:"🌿", color:"#10b981", items:[
-    {text:"Parkplatz – Schirme aufgefüllt?",days:"all"},{text:"Parkplatz – Schrankenanlage + Kassenautomat i.O.?",days:"all"},{text:"Parkplatz – Schmutz entfernt?",days:"all"},
+  { id:"parkplatz", label:"Parkplatz & Eingang", floor:"Außen", icon:"🅿️", color:"#10b981", items:[
+    {text:"Schirme aufgefüllt?",days:"all"},{text:"Schrankenanlage + Kassenautomat i.O.?",days:"all"},{text:"Schmutz entfernt?",days:"all"},
     {text:"Entertainmentwalk – Saubergemacht?",days:"all"},
-    {text:"Höhenkontrolle – Golfbälle noch dran?",days:"mo_di_sa"},{text:"Höhenkontrolle – Unbeschädigt?",days:"mo_di_sa"},
+    {text:"Höhenkontrolle – Golfbälle noch dran?",days:"mo_di_sa"},{text:"Höhenkontrolle – Unbeschädigt?",days:"mo_di_sa"}]},
+  { id:"aussen_gruen", label:"Grünanlage & Sonstiges", floor:"Außen", icon:"🌿", color:"#059669", items:[
     {text:"Wiener Straße – Müll aus der Hecke entfernt?",days:"mi"},{text:"Wiener Straße – Gehweg gereinigt?",days:"mi"},
     {text:"Lieferanteneinfahrt – Alles sauber?",days:"mo_mi_sa"},{text:"Lieferanteneinfahrt – Feuerwehrumkehr gereinigt?",days:"mo_mi_sa"},
     {text:"Grünanlagen – Alle Rasenflächen ordentlich?",days:"all"},{text:"Serverraum – Checken",days:"mi"}]},
-];
+]
 
 const TECH_CATEGORIES = ["Elektro / Beleuchtung","Heizung / Klima","Sanitär / Wasser","Tee Line / Technik","Bar / Küche","Gebäude / Bausubstanz","IT / AV / Monitore","Außenanlage","Sonstiges"];
 const PRIORITY_LEVELS = [{label:"Niedrig",color:"#22c55e",icon:"🟢"},{label:"Mittel",color:"#f59e0b",icon:"🟡"},{label:"Hoch",color:"#ef4444",icon:"🔴"}];
@@ -113,6 +144,7 @@ const DAY_NAMES   = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Frei
 function itemActiveToday(item, di) {
   if (item.days==="all") return true;
   if (item.days==="so") return di===0;
+  // compound keys like mo_mi_fr, mo_di_sa etc.
   return item.days.split("_").includes(DAY_IDX_KEY[di]);
 }
 function getZonesToday(di) {
